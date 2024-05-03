@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sehatjantungku/home_page.dart';
+import 'package:sehatjantungku/page/home/home_page.dart';
 
 void main() {
   runApp(const MyApp());
