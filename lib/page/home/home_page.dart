@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sehatjantungku/page/identification/identification_page.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -298,40 +299,6 @@ class MyHomePage extends StatelessWidget {
             ),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.black54,
-        showUnselectedLabels: false,
-        currentIndex: 0,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-            backgroundColor: Colors.blue,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.monitor_heart_rounded),
-            label: 'Identification',
-            backgroundColor: Colors.blue,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.map),
-            label: 'Maps',
-            backgroundColor: Colors.blue,
-          ),
-        ],
-        onTap: (int index) {
-          if (index == 0) {
-            Navigator.pushReplacementNamed(context, '/');
-          }
-          if (index == 1) {
-            Navigator.pushReplacementNamed(context, '/identificatonPage');
-          }
-          if (index == 2) {
-            Navigator.pushReplacementNamed(context, '/mapsPage');
-          }
-        },
       ),
     );
   }
