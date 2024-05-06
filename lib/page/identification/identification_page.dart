@@ -47,7 +47,7 @@ class IdentificationPage extends StatelessWidget {
             Navigator.pushReplacementNamed(context, '/identificatonPage');
           }
           if (index == 2) {
-            Navigator.pushReplacementNamed(context, '/');
+            Navigator.pushReplacementNamed(context, '/mapsPage');
           }
         },
       ),

@@ -127,7 +127,7 @@ class MyHomePage extends StatelessWidget {
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(),
                           child: const Text(
-                            ' Sekarang',
+                            'Cek Sekarang',
                             style: TextStyle(
                               color: Colors.blue,
                               fontSize: 16,
@@ -329,7 +329,7 @@ class MyHomePage extends StatelessWidget {
             Navigator.pushReplacementNamed(context, '/identificatonPage');
           }
           if (index == 2) {
-            Navigator.pushReplacementNamed(context, '/');
+            Navigator.pushReplacementNamed(context, '/mapsPage');
           }
         },
       ),

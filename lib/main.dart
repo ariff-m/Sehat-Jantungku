@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sehatjantungku/page/home/home_page.dart';
 import 'package:sehatjantungku/page/identification/identification_page.dart';
+import 'package:sehatjantungku/page/maps/maps_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (_) => MyHomePage(),
         '/identificatonPage': (_) => const IdentificationPage(),
+        '/mapsPage': (_) => const MapsPage(),
       },
     );
   }
