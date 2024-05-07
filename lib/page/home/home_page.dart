@@ -246,14 +246,6 @@ class MyHomePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(30),
                       child: YoutubePlayer(
                         controller: _ytcontrol,
-                        showVideoProgressIndicator: true,
-                        progressIndicatorColor: Colors.red,
-                        topActions: [
-                          const SizedBox(
-                            width: 8,
-                          ),
-                          Text(_ytcontrol.metadata.title)
-                        ],
                       ),
                     ),
                   ),
@@ -278,14 +270,6 @@ class MyHomePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(30),
                       child: YoutubePlayer(
                         controller: _ytcontrol2,
-                        showVideoProgressIndicator: true,
-                        progressIndicatorColor: Colors.red,
-                        topActions: [
-                          const SizedBox(
-                            width: 8,
-                          ),
-                          Text(_ytcontrol.metadata.title)
-                        ],
                       ),
                     ),
                   ),
