@@ -25,21 +25,21 @@ class _BottomNavigationnsState extends State<BottomNavigationns> {
   List<PersistentBottomNavBarItem> _navBarsItems() {
     return [
       PersistentBottomNavBarItem(
-        icon: const Icon(Icons.home),
+        icon: const Icon(CupertinoIcons.home),
         title: ("Home"),
         activeColorPrimary: Colors.blue,
         activeColorSecondary: Colors.white,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
-        icon: const Icon(Icons.monitor_heart_rounded),
+        icon: const Icon(CupertinoIcons.heart_circle),
         title: ("Identification"),
         activeColorPrimary: Colors.blue,
         activeColorSecondary: Colors.white,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
-        icon: const Icon(Icons.map),
+        icon: const Icon(CupertinoIcons.map_fill),
         title: ("Maps"),
         activeColorPrimary: Colors.blue,
         activeColorSecondary: Colors.white,

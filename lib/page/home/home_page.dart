@@ -1,27 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sehatjantungku/page/identification/identification_page.dart';
+import 'package:sehatjantungku/model/home_page_model.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
-
-  final List<String> images = [
-    'assets/gejala_1.jpg',
-    'assets/gejala_2.jpg',
-    'assets/gejala_3.jpg',
-    'assets/gejala_4.jpg',
-    'assets/gejala_5.jpg',
-    'assets/gejala_6.jpg',
-  ];
-
-  final List<String> textGejala = [
-    'Detak Jantung Tidak Teratur',
-    'Tekanan Darah Tinggi',
-    'Keringat Dingin',
-    'Mudah Lelah',
-    'Nyeri Dada',
-    'Sakit Kepala',
-  ];
 
   final YoutubePlayerController _ytcontrol = YoutubePlayerController(
     initialVideoId: 'lgkwjHYJEGQ',
@@ -32,6 +15,7 @@ class MyHomePage extends StatelessWidget {
     initialVideoId: 'xn8_7BC9iac',
     flags: const YoutubePlayerFlags(autoPlay: false),
   );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,17 +51,19 @@ class MyHomePage extends StatelessWidget {
                         height: 140,
                       ),
                       const SizedBox(width: 25),
-                      const Expanded(
+                      Expanded(
                         child: Text(
                           'Suarakan Kesehatan Jantungmu dengan Aplikasi Deteksi Dini Penyakit Jantung',
-                          style: TextStyle(
-                            fontSize: 17,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                          style: GoogleFonts.poppins(
+                            textStyle: const TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                           softWrap: true,
                         ),
-                      ),
+                      )
                     ],
                   ),
                 ],
@@ -108,30 +94,37 @@ class MyHomePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
+                        Text(
                           'Ayo Tes',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold,
+                          style: GoogleFonts.poppins(
+                            textStyle: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
-                        const Text(
+                        Text(
                           'Kardiovaskular',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold,
+                          style: GoogleFonts.poppins(
+                            textStyle: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                         ElevatedButton(
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(),
-                          child: const Text(
+                          child: Text(
                             'Cek Sekarang',
-                            style: TextStyle(
-                              color: Colors.blue,
-                              fontSize: 16,
+                            style: GoogleFonts.poppins(
+                              textStyle: const TextStyle(
+                                color: Colors.blue,
+                                // fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ),
                         ),
@@ -151,11 +144,13 @@ class MyHomePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     'Gejala Penyakit Jantung',
-                    style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold,
+                    style: GoogleFonts.poppins(
+                      textStyle: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -202,9 +197,10 @@ class MyHomePage extends StatelessWidget {
                                     ),
                                     child: Text(
                                       textGejala[index],
-                                      style: const TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold,
+                                      style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                        ),
                                       ),
                                       textAlign: TextAlign.center,
                                     ),
@@ -220,11 +216,13 @@ class MyHomePage extends StatelessWidget {
                   const SizedBox(
                     height: 5,
                   ),
-                  const Text(
+                  Text(
                     'Video Edukasi',
-                    style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold,
+                    style: GoogleFonts.poppins(
+                      textStyle: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   const SizedBox(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MapsPage extends StatelessWidget {
   const MapsPage({super.key});
@@ -9,11 +10,14 @@ class MapsPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.blue,
         centerTitle: true,
-        title: const Text(
+        title: Text(
           'Lokasi Pusat Kesehatan',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
+          style: GoogleFonts.poppins(
+            textStyle: const TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),
