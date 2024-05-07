@@ -5,14 +5,14 @@ import 'package:sehatjantungku/page/identification/identification_page.dart';
 import 'package:sehatjantungku/page/maps/maps_page.dart';
 import 'package:flutter/cupertino.dart';
 
-class BottomNavigationns extends StatefulWidget {
-  const BottomNavigationns({super.key});
+class BottomNavigationPage extends StatefulWidget {
+  const BottomNavigationPage({super.key});
 
   @override
-  State<BottomNavigationns> createState() => _BottomNavigationnsState();
+  State<BottomNavigationPage> createState() => _BottomNavigationPageState();
 }
 
-class _BottomNavigationnsState extends State<BottomNavigationns> {
+class _BottomNavigationPageState extends State<BottomNavigationPage> {
   final _controller = PersistentTabController(initialIndex: 0);
   List<Widget> _buildScreens() {
     return [

@@ -8,12 +8,18 @@ class MyHomePage extends StatelessWidget {
 
   final YoutubePlayerController _ytcontrol = YoutubePlayerController(
     initialVideoId: 'lgkwjHYJEGQ',
-    flags: const YoutubePlayerFlags(autoPlay: false),
+    flags: const YoutubePlayerFlags(
+      autoPlay: false,
+      hideThumbnail: true,
+    ),
   );
 
   final YoutubePlayerController _ytcontrol2 = YoutubePlayerController(
     initialVideoId: 'xn8_7BC9iac',
-    flags: const YoutubePlayerFlags(autoPlay: false),
+    flags: const YoutubePlayerFlags(
+      autoPlay: false,
+      hideThumbnail: true,
+    ),
   );
 
   @override
