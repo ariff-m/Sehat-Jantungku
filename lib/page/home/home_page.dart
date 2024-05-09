@@ -1,26 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:sehatjantungku/model/home_page_model.dart';
+import 'package:sehatjantungku/page/home/home_view_model.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
 
-  final YoutubePlayerController _ytcontrol = YoutubePlayerController(
-    initialVideoId: 'lgkwjHYJEGQ',
-    flags: const YoutubePlayerFlags(
-      autoPlay: false,
-      hideThumbnail: true,
-    ),
-  );
-
-  final YoutubePlayerController _ytcontrol2 = YoutubePlayerController(
-    initialVideoId: 'xn8_7BC9iac',
-    flags: const YoutubePlayerFlags(
-      autoPlay: false,
-      hideThumbnail: true,
-    ),
-  );
+   final HomePageViewModel viewModel = HomePageViewModel();
 
   @override
   Widget build(BuildContext context) {
@@ -251,7 +238,7 @@ class MyHomePage extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(30),
                       child: YoutubePlayer(
-                        controller: _ytcontrol,
+                        controller: viewModel.ytControl,
                       ),
                     ),
                   ),
@@ -275,7 +262,7 @@ class MyHomePage extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(30),
                       child: YoutubePlayer(
-                        controller: _ytcontrol2,
+                        controller: viewModel.ytControl2,
                       ),
                     ),
                   ),
