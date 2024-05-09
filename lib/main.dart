@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sehatjantungku/page/home/home_page.dart';
 import 'package:sehatjantungku/page/identification/identification_page.dart';
 import 'package:sehatjantungku/page/maps/maps_page.dart';
+import 'package:sehatjantungku/page/maps/maps_view_model.dart';
 import 'package:sehatjantungku/page/splash_page/splash_page.dart';
 
 void main() {
@@ -13,20 +15,25 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'SehatJantungku',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-        useMaterial3: true,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => MapsProvider()),
+      ],
+      child: MaterialApp(
+        title: 'SehatJantungku',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+          useMaterial3: true,
+        ),
+        debugShowCheckedModeBanner: false,
+        initialRoute: '/',
+        routes: {
+          '/': (_) => const SplashPage(),
+          '/homePage': (_) => MyHomePage(),
+          '/identificatonPage': (_) => const IdentificationPage(),
+          '/mapsPage': (_) => const MapsPage(),
+        },
       ),
-      debugShowCheckedModeBanner: false,
-      initialRoute: '/',
-      routes: {
-        '/': (_) => const SplashPage(),
-        '/homePage': (_) => MyHomePage(),
-        '/identificatonPage': (_) => const IdentificationPage(),
-        '/mapsPage': (_) => const MapsPage(),
-      },
     );
   }
 }

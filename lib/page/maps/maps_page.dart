@@ -1,41 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:sehatjantungku/page/maps/maps_view_model.dart';
-import 'package:geolocator/geolocator.dart';
 
-class MapsPage extends StatefulWidget {
+class MapsPage extends StatelessWidget {
   const MapsPage({super.key});
 
   @override
-  State<MapsPage> createState() => _MapsPageState();
-}
-
-class _MapsPageState extends State<MapsPage> {
-  final GPS _gps = GPS();
-  Position? _userposition;
-  GoogleMapController? _mapController;
-
-  void _handlePositionStream(Position position) {
-    setState(() {
-      _userposition = position;
-    });
-
-    if (_mapController != null && _userposition != null) {
-      _mapController!.animateCamera(
-        CameraUpdate.newLatLng(
-          LatLng(_userposition!.latitude, _userposition!.longitude),
-        ),
-      );
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
-    LatLng myLocation = _userposition != null
-        ? LatLng(_userposition!.latitude, _userposition!.longitude)
-        : const LatLng(0, 0);
-
+    Provider.of<MapsProvider>(context, listen: false).startPositionStream();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
@@ -52,30 +26,27 @@ class _MapsPageState extends State<MapsPage> {
         ),
       ),
       body: Center(
-        child: GoogleMap(
-          initialCameraPosition: CameraPosition(target: myLocation, zoom: 14),
-          markers: {
-            Marker(markerId: const MarkerId('myLocation'), position: myLocation)
-          },
-          onMapCreated: (GoogleMapController controller) {
-            _mapController = controller;
+        child: Consumer<MapsProvider>(
+          builder: (context, mapsProvider, _) {
+            LatLng myLocation = mapsProvider.userPosition != null
+                ? LatLng(mapsProvider.userPosition!.latitude,
+                    mapsProvider.userPosition!.longitude)
+                : const LatLng(0, 0);
+            return GoogleMap(
+              initialCameraPosition:
+                  CameraPosition(target: myLocation, zoom: 14),
+              markers: {
+                Marker(
+                    markerId: const MarkerId('myLocation'),
+                    position: myLocation)
+              },
+              onMapCreated: (GoogleMapController controller) {
+                mapsProvider.initializeMapController(controller);
+              },
+            );
           },
         ),
       ),
     );
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _gps.startPositionStream(_handlePositionStream).catchError((e) {
-      setState(() {});
-    });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _gps.stopPositionStream();
   }
 }
