@@ -14,11 +14,20 @@ class MapsPage extends StatefulWidget {
 class _MapsPageState extends State<MapsPage> {
   final GPS _gps = GPS();
   Position? _userposition;
+  GoogleMapController? _mapController;
 
-  void _handelPositionStream(Position position) {
+  void _handlePositionStream(Position position) {
     setState(() {
       _userposition = position;
     });
+
+    if (_mapController != null && _userposition != null) {
+      _mapController!.animateCamera(
+        CameraUpdate.newLatLng(
+          LatLng(_userposition!.latitude, _userposition!.longitude),
+        ),
+      );
+    }
   }
 
   @override
@@ -49,14 +58,7 @@ class _MapsPageState extends State<MapsPage> {
             Marker(markerId: const MarkerId('myLocation'), position: myLocation)
           },
           onMapCreated: (GoogleMapController controller) {
-            if (_userposition != null) {
-              controller.animateCamera(
-                CameraUpdate.newLatLngZoom(
-                  LatLng(_userposition!.latitude, _userposition!.longitude),
-                  14,
-                ),
-              );
-            }
+            _mapController = controller;
           },
         ),
       ),
@@ -66,7 +68,7 @@ class _MapsPageState extends State<MapsPage> {
   @override
   void initState() {
     super.initState();
-    _gps.startPositionStream(_handelPositionStream).catchError((e) {
+    _gps.startPositionStream(_handlePositionStream).catchError((e) {
       setState(() {});
     });
   }
