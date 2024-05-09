@@ -2,6 +2,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
     <application
         android:label="sehatjantungku"
         android:name="${applicationName}"
@@ -34,7 +36,7 @@
             android:value="2" />
 
         <meta-data android:name="com.google.android.geo.API_KEY"
-               android:value="AIzaSyBebw6P3qZVg8rMg4mzMr********"/>
+               android:value="AIzaSyBebw6P3qZVg8rMg4mzMrxz5l24JQv4ezw"/>
 
     </application>
     <!-- Required to query activities that can process text, see:
