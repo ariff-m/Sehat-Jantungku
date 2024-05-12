@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
 
-   final HomePageViewModel viewModel = HomePageViewModel();
+  final HomePageViewModel viewModel = HomePageViewModel();
 
   @override
   Widget build(BuildContext context) {

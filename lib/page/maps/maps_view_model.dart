@@ -1,9 +1,16 @@
-// ignore_for_file: avoid_print
-
 import 'dart:async';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+//import 'package:google_places_flutter/google_places_flutter.dart';
+
+// class Place {
+//   final String placeId;
+//   final String name;
+//   final LatLng location;
+
+//   Place({required this.placeId, required this.name, required this.location});
+// }
 
 typedef PositionCallback = Function(Position position);
 
@@ -45,6 +52,9 @@ class MapsProvider extends ChangeNotifier {
   Position? _userposition;
   Position? get userPosition => _userposition;
 
+  // final List<Place> _places = [];
+  // List<Place> get places => _places;
+
   GoogleMapController? _mapController;
   GoogleMapController? get mapController => _mapController;
 
@@ -71,6 +81,7 @@ class MapsProvider extends ChangeNotifier {
     try {
       await _gps.startPositionStream(handlePositionStream);
     } catch (e) {
+      // ignore: avoid_print
       print("Error starting position stream: $e");
     }
     notifyListeners();
@@ -80,8 +91,32 @@ class MapsProvider extends ChangeNotifier {
     try {
       await _gps.stopPositionStream();
     } catch (e) {
+      // ignore: avoid_print
       print("Error stopping position stream: $e");
     }
     notifyListeners();
   }
+
+  // Future<void> getNearbyHospitals() async {
+  //   final response = GooglePlaceAutoCompleteTextField(
+  //     googleAPIKey: "Your_API_Key_Here",
+  //     latitude: 37.77483,
+  //     longitude: -122.41942,
+  //     debounceTime: 5000,
+  //     type: PlaceType.hospital,
+  //     textEditingController: null,
+  //   );
+
+  //   _places.clear();
+  //   _places.addAll(response.results.map((result) => Place(
+  //         placeId: result.placeId,
+  //         name: result.name,
+  //         location: LatLng(
+  //           result.geometry.location.lat,
+  //           result.geometry.location.lng,
+  //         ),
+  //       )));
+
+  //   notifyListeners();
+  // }
 }
