@@ -17,8 +17,7 @@ class SplashPage extends StatelessWidget {
       body: Center(
         child: SizedBox(
           height: 100.0,
-          child: Image.asset(
-              'assets/sehat_jantungku_logo.png'), 
+          child: Image.asset('assets/sehat_jantungku_logo.png'),
         ),
       ),
     );

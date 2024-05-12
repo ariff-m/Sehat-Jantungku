@@ -51,7 +51,9 @@ class MapsProvider extends ChangeNotifier {
   final GPS _gps = GPS();
   Position? _userposition;
   Position? get userPosition => _userposition;
-
+  BitmapDescriptor? markerIcon;
+  List<Marker> _hospitalMarkers = [];
+  List<Marker> get hospitalMarkers => _hospitalMarkers;
   // final List<Place> _places = [];
   // List<Place> get places => _places;
 
@@ -97,9 +99,45 @@ class MapsProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void addCustomIcon() async {
+    try {
+      final icon = await BitmapDescriptor.fromAssetImage(
+        const ImageConfiguration(),
+        'assets/blue_dot.png',
+      );
+      markerIcon = icon;
+      notifyListeners();
+    } catch (e) {
+      // ignore: avoid_print
+      print("Errorr loading custom icon: $e");
+    }
+  }
+
+  void addHospitalMarkers(List<String> hospitalCoordinates) {
+    List<Marker> hospitalMarkers = [];
+
+    for (var coordinate in hospitalCoordinates) {
+      List<String> parts = coordinate.split(', ');
+      double latitude = double.parse(parts[0]);
+      double longitude = double.parse(parts[1]);
+
+      Marker marker = Marker(
+        markerId: MarkerId(coordinate),
+        position: LatLng(latitude, longitude),
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
+        infoWindow: const InfoWindow(title: 'Hospital'),
+      );
+
+      hospitalMarkers.add(marker);
+    }
+
+    _hospitalMarkers = hospitalMarkers;
+    notifyListeners();
+  }
+
   // Future<void> getNearbyHospitals() async {
   //   final response = GooglePlaceAutoCompleteTextField(
-  //     googleAPIKey: "Your_API_Key_Here",
+  //     googleAPIKey: "API Key",
   //     latitude: 37.77483,
   //     longitude: -122.41942,
   //     debounceTime: 5000,
