@@ -3,10 +3,10 @@ import 'package:provider/provider.dart';
 import 'package:sehatjantungku/screens/home/home_page.dart';
 import 'package:sehatjantungku/screens/maps/maps_page.dart';
 import 'package:sehatjantungku/screens/maps/maps_view_model.dart';
-import 'package:sehatjantungku/screens/splash_page/splash_page.dart';
+import 'package:sehatjantungku/screens/splash/splash_page.dart';
 import 'package:sehatjantungku/screens/identification/identification_page.dart';
-import 'package:sehatjantungku/screens/prevention_treatment_suggestions/prevention_page.dart';
-import 'package:sehatjantungku/screens/prevention_treatment_suggestions/treatment_page.dart';
+import 'package:sehatjantungku/screens/suggestions/prevention_page.dart';
+import 'package:sehatjantungku/screens/suggestions/treatment_page.dart';
 
 void main() {
   runApp(const MyApp());
