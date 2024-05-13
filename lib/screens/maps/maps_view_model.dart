@@ -1,16 +1,9 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-//import 'package:google_places_flutter/google_places_flutter.dart';
-
-// class Place {
-//   final String placeId;
-//   final String name;
-//   final LatLng location;
-
-//   Place({required this.placeId, required this.name, required this.location});
-// }
+import 'package:sehatjantungku/model/maps_model.dart';
 
 typedef PositionCallback = Function(Position position);
 
@@ -54,8 +47,7 @@ class MapsProvider extends ChangeNotifier {
   BitmapDescriptor? markerIcon;
   List<Marker> _hospitalMarkers = [];
   List<Marker> get hospitalMarkers => _hospitalMarkers;
-  // final List<Place> _places = [];
-  // List<Place> get places => _places;
+  final MapsModel mapsModel = MapsModel();
 
   GoogleMapController? _mapController;
   GoogleMapController? get mapController => _mapController;
@@ -93,8 +85,9 @@ class MapsProvider extends ChangeNotifier {
     try {
       await _gps.stopPositionStream();
     } catch (e) {
-      // ignore: avoid_print
-      print("Error stopping position stream: $e");
+      if (kDebugMode) {
+        print("Error stopping position stream: $e");
+      }
     }
     notifyListeners();
   }
@@ -108,8 +101,9 @@ class MapsProvider extends ChangeNotifier {
       markerIcon = icon;
       notifyListeners();
     } catch (e) {
-      // ignore: avoid_print
-      print("Errorr loading custom icon: $e");
+      if (kDebugMode) {
+        print("Errorr loading custom icon: $e");
+      }
     }
   }
 
@@ -134,27 +128,4 @@ class MapsProvider extends ChangeNotifier {
     _hospitalMarkers = hospitalMarkers;
     notifyListeners();
   }
-
-  // Future<void> getNearbyHospitals() async {
-  //   final response = GooglePlaceAutoCompleteTextField(
-  //     googleAPIKey: "API Key",
-  //     latitude: 37.77483,
-  //     longitude: -122.41942,
-  //     debounceTime: 5000,
-  //     type: PlaceType.hospital,
-  //     textEditingController: null,
-  //   );
-
-  //   _places.clear();
-  //   _places.addAll(response.results.map((result) => Place(
-  //         placeId: result.placeId,
-  //         name: result.name,
-  //         location: LatLng(
-  //           result.geometry.location.lat,
-  //           result.geometry.location.lng,
-  //         ),
-  //       )));
-
-  //   notifyListeners();
-  // }
 }

@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:sehatjantungku/model/home_page_model.dart';
-import 'package:sehatjantungku/page/home/home_view_model.dart';
+import 'package:sehatjantungku/constants/box_constant.dart';
+import 'package:sehatjantungku/constants/image_constant.dart';
+import 'package:sehatjantungku/screens/home/home_view_model.dart';
+import 'package:sehatjantungku/constants/text_style_constant.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
 
   final HomePageViewModel viewModel = HomePageViewModel();
+
 
   @override
   Widget build(BuildContext context) {
@@ -20,18 +22,7 @@ class MyHomePage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               height: 280,
               width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(30),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 3,
-                    blurRadius: 7,
-                    offset: const Offset(0, 3),
-                  ),
-                ],
-              ),
+              decoration: BoxConstant.decoration1,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -40,20 +31,14 @@ class MyHomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Image.asset(
-                        'assets/login image.png',
+                        ImageConstant.doctor,
                         height: 140,
                       ),
                       const SizedBox(width: 25),
                       Expanded(
                         child: Text(
                           'Suarakan Kesehatan Jantungmu dengan Aplikasi Deteksi Dini Penyakit Jantung',
-                          style: GoogleFonts.poppins(
-                            textStyle: const TextStyle(
-                              fontSize: 16,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                          style: TextStyleConstant.fontStyleHeader1,
                           softWrap: true,
                         ),
                       )
@@ -68,18 +53,7 @@ class MyHomePage extends StatelessWidget {
               child: Container(
                 height: 150,
                 width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(30),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 3,
-                      blurRadius: 7,
-                      offset: const Offset(0, 3),
-                    )
-                  ],
-                ),
+                decoration: BoxConstant.decoration1,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -89,42 +63,22 @@ class MyHomePage extends StatelessWidget {
                       children: [
                         Text(
                           'Ayo Tes',
-                          style: GoogleFonts.poppins(
-                            textStyle: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                          style: TextStyleConstant.fontStyleHeader1,
                         ),
                         Text(
                           'Kardiovaskular',
-                          style: GoogleFonts.poppins(
-                            textStyle: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                          style: TextStyleConstant.fontStyleHeader1,
                         ),
                         ElevatedButton(
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(),
-                          child: Text(
-                            'Cek Sekarang',
-                            style: GoogleFonts.poppins(
-                              textStyle: const TextStyle(
-                                color: Colors.blue,
-                                // fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
+                          child: Text('Cek Sekarang',
+                              style: TextStyleConstant.buttonCek),
                         ),
                       ],
                     ),
                     Image.asset(
-                      'assets/doctor.png',
+                      ImageConstant.doctorAndpatient,
                       height: 110,
                     ),
                   ],
@@ -139,12 +93,7 @@ class MyHomePage extends StatelessWidget {
                 children: [
                   Text(
                     'Gejala Penyakit Jantung',
-                    style: GoogleFonts.poppins(
-                      textStyle: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    style: TextStyleConstant.fontStyleHeader2,
                   ),
                   SizedBox(
                     height: 180,
@@ -157,18 +106,7 @@ class MyHomePage extends StatelessWidget {
                             child: Container(
                               width: 150,
                               height: 150,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(20),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.5),
-                                    spreadRadius: 3,
-                                    blurRadius: 7,
-                                    offset: const Offset(0, 3),
-                                  )
-                                ],
-                              ),
+                              decoration: BoxConstant.decoration2,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
@@ -177,7 +115,7 @@ class MyHomePage extends StatelessWidget {
                                       top: Radius.circular(20),
                                     ),
                                     child: Image.asset(
-                                      images[index],
+                                      viewModel.homePageModel.images[index],
                                       height: 100,
                                       fit: BoxFit.cover,
                                     ),
@@ -189,12 +127,8 @@ class MyHomePage extends StatelessWidget {
                                           (index >= 2 && index <= 6) ? 11 : 0,
                                     ),
                                     child: Text(
-                                      textGejala[index],
-                                      style: GoogleFonts.poppins(
-                                        textStyle: const TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
+                                      viewModel.homePageModel.textGejala[index],
+                                      style: TextStyleConstant.fontStyleHeader3,
                                       textAlign: TextAlign.center,
                                     ),
                                   ),
@@ -211,30 +145,14 @@ class MyHomePage extends StatelessWidget {
                   ),
                   Text(
                     'Video Edukasi',
-                    style: GoogleFonts.poppins(
-                      textStyle: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    style: TextStyleConstant.fontStyleHeader2,
                   ),
                   const SizedBox(
                     height: 5,
                   ),
                   Container(
                     height: 210,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: Colors.blue,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 3,
-                          blurRadius: 7,
-                          offset: const Offset(0, 3),
-                        )
-                      ],
-                    ),
+                    decoration: BoxConstant.decoration1,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(30),
                       child: YoutubePlayer(
@@ -247,18 +165,7 @@ class MyHomePage extends StatelessWidget {
                   ),
                   Container(
                     height: 210,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: Colors.blue,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 3,
-                          blurRadius: 7,
-                          offset: const Offset(0, 3),
-                        )
-                      ],
-                    ),
+                    decoration: BoxConstant.decoration1,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(30),
                       child: YoutubePlayer(

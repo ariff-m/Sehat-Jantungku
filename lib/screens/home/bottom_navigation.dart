@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
-import 'package:sehatjantungku/page/home/home_page.dart';
-import 'package:sehatjantungku/page/identification/identification_page.dart';
-import 'package:sehatjantungku/page/maps/maps_page.dart';
+import 'package:sehatjantungku/constants/color_constant.dart';
+import 'package:sehatjantungku/screens/home/home_page.dart';
+import 'package:sehatjantungku/screens/identification/identification_page.dart';
+import 'package:sehatjantungku/screens/maps/maps_page.dart';
 import 'package:flutter/cupertino.dart';
 
 class BottomNavigationPage extends StatefulWidget {
@@ -27,23 +28,23 @@ class _BottomNavigationPageState extends State<BottomNavigationPage> {
       PersistentBottomNavBarItem(
         icon: const Icon(CupertinoIcons.home),
         title: ("Home"),
-        activeColorPrimary: Colors.blue,
-        activeColorSecondary: Colors.white,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
+        activeColorPrimary: ColorConstant.secondary,
+        activeColorSecondary: ColorConstant.primary,
+        inactiveColorPrimary: ColorConstant.grey2,
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(CupertinoIcons.heart_circle),
         title: ("Identification"),
-        activeColorPrimary: Colors.blue,
-        activeColorSecondary: Colors.white,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
+        activeColorPrimary: ColorConstant.secondary,
+        activeColorSecondary: ColorConstant.primary,
+        inactiveColorPrimary: ColorConstant.grey2,
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(CupertinoIcons.map_fill),
         title: ("Maps"),
-        activeColorPrimary: Colors.blue,
-        activeColorSecondary: Colors.white,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
+        activeColorPrimary: ColorConstant.secondary,
+        activeColorSecondary: ColorConstant.primary,
+        inactiveColorPrimary: ColorConstant.grey2,
       ),
     ];
   }
@@ -63,7 +64,7 @@ class _BottomNavigationPageState extends State<BottomNavigationPage> {
       hideNavigationBarWhenKeyboardShows: true,
       decoration: const NavBarDecoration(
         //borderRadius: BorderRadius.circular(10.0),
-        colorBehindNavBar: Colors.white,
+        colorBehindNavBar: Colors.red,
       ),
       popAllScreensOnTapOfSelectedTab: true,
       popActionScreens: PopActionScreensType.all,

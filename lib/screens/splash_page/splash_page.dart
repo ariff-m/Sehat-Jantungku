@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sehatjantungku/page/home/bottom_navigation.dart';
+import 'package:sehatjantungku/constants/image_constant.dart';
+import 'package:sehatjantungku/screens/home/bottom_navigation.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
@@ -17,7 +18,7 @@ class SplashPage extends StatelessWidget {
       body: Center(
         child: SizedBox(
           height: 100.0,
-          child: Image.asset('assets/sehat_jantungku_logo.png'),
+          child: Image.asset(ImageConstant.logoApp),
         ),
       ),
     );

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:sehatjantungku/page/maps/maps_view_model.dart';
-import 'package:sehatjantungku/model/maps_model.dart';
+import 'package:sehatjantungku/constants/color_constant.dart';
+import 'package:sehatjantungku/constants/text_style_constant.dart';
+import 'package:sehatjantungku/screens/maps/maps_view_model.dart';
 
 class MapsPage extends StatelessWidget {
   const MapsPage({super.key});
@@ -14,20 +14,15 @@ class MapsPage extends StatelessWidget {
     Provider.of<MapsProvider>(context, listen: false).startPositionStream();
     Provider.of<MapsProvider>(context, listen: false).stopPositionStream();
 
+    final MapsProvider mapsProvider =
+        Provider.of<MapsProvider>(context, listen: false);
+        
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.blue,
+          backgroundColor: ColorConstant.secondary,
           centerTitle: true,
-          title: Text(
-            'Lokasi Pusat Kesehatan',
-            style: GoogleFonts.poppins(
-              textStyle: const TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
+          title: Text('Lokasi Pusat Kesehatan',
+              style: TextStyleConstant.fontStyleHeader1),
         ),
         body: Stack(
           children: [
@@ -52,7 +47,6 @@ class MapsPage extends StatelessWidget {
                     },
                     onMapCreated: (GoogleMapController controller) {
                       mapsProvider.initializeMapController(controller);
-                      //mapsProvider.addHospitalMarkers(hospitalCordinates);
                     },
                   );
                 },
@@ -65,20 +59,16 @@ class MapsPage extends StatelessWidget {
                 child: TextButton(
                   onPressed: () {
                     Provider.of<MapsProvider>(context, listen: false)
-                        .addHospitalMarkers(hospitalCordinates);
+                        .addHospitalMarkers(
+                            mapsProvider.mapsModel.hospitalCordinates);
                   },
                   style: TextButton.styleFrom(
-                    backgroundColor: Colors.blue,
+                    backgroundColor: ColorConstant.secondary,
                     padding: const EdgeInsets.all(16.0),
                   ),
                   child: Text(
                     'Cari Rumah Sakit',
-                    style: GoogleFonts.poppins(
-                      textStyle: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
+                    style: TextStyleConstant.buttonMaps,
                   ),
                 ),
               ),
