@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sehatjantungku/constants/color_constant.dart';
-import 'package:sehatjantungku/constants/text_style_constant.dart';
 import 'package:sehatjantungku/screens/maps/maps_view_model.dart';
+import 'package:sehatjantungku/constants/text_style_constant.dart';
 
 class MapsPage extends StatelessWidget {
   const MapsPage({super.key});
@@ -16,7 +16,7 @@ class MapsPage extends StatelessWidget {
 
     final MapsProvider mapsProvider =
         Provider.of<MapsProvider>(context, listen: false);
-        
+
     return Scaffold(
         appBar: AppBar(
           backgroundColor: ColorConstant.secondary,

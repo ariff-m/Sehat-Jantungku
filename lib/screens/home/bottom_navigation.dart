@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:sehatjantungku/constants/color_constant.dart';
 import 'package:sehatjantungku/screens/home/home_page.dart';
-import 'package:sehatjantungku/screens/identification/identification_page.dart';
-import 'package:sehatjantungku/screens/maps/maps_page.dart';
+import 'package:sehatjantungku/screens/identification/identification_screen.dart';
+import 'package:sehatjantungku/screens/maps/maps_screen.dart';
 import 'package:flutter/cupertino.dart';
 
 class BottomNavigationPage extends StatefulWidget {

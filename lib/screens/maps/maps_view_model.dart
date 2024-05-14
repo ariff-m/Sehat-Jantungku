@@ -1,9 +1,9 @@
 import 'dart:async';
+import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sehatjantungku/model/maps_model.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 typedef PositionCallback = Function(Position position);
 
