@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sehatjantungku/constants/box_constant.dart';
 import 'package:sehatjantungku/constants/text_style_constant.dart';
+import 'package:sehatjantungku/screens/suggestions/suggestion_view_model.dart';
 
 class TreatmentPage extends StatelessWidget {
   const TreatmentPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = Provider.of<TreatmentViewModel>(context, listen: false);
+    if (viewModel.response.isEmpty && !viewModel.isLoading) {
+      viewModel.getResponseGemini();
+    }
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
@@ -23,7 +29,6 @@ class TreatmentPage extends StatelessWidget {
           children: [
             Container(
               padding: const EdgeInsets.all(15),
-              height: 230,
               width: double.infinity,
               decoration: BoxConstant.decoration3,
               child: Column(
@@ -33,7 +38,7 @@ class TreatmentPage extends StatelessWidget {
                     "Segera konsultasikan diri Anda dengan dokter atau spesialis kardiovaskular: ",
                     style: TextStyleConstant.fontStyleHeader3,
                   ),
-                  const SizedBox(height: 15),
+                  const SizedBox(height: 10),
                   Text(
                     "Dokter akan melakukan pemeriksaan fisik yang komprehensif, mengevaluasi riwayat kesehatan dengan teliti, dan mungkin melakukan berbagai jenis tes diagnostik seperti elektrokardiogram (EKG), analisis darah secara menyeluruh, atau pencitraan jantung untuk mengetahui kondisi Anda.",
                     style: TextStyleConstant.fontStyle1,
@@ -42,19 +47,40 @@ class TreatmentPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            Container(
-              padding: const EdgeInsets.all(20),
-              height: 350,
-              width: double.infinity,
-              decoration: BoxConstant.decoration3,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Tips untuk Perubahan Gaya Hidup: ",
-                      style: TextStyleConstant.fontStyleHeader3),
-                  const SizedBox(height: 15),
-                  Text(" ", style: TextStyleConstant.fontStyle1),
-                ],
+            Expanded(
+              child: Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(15),
+                decoration: BoxConstant.decoration3,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Tips untuk Perubahan Gaya Hidup: ",
+                      style: TextStyleConstant.fontStyleHeader3,
+                    ),
+                    const SizedBox(height: 10),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: Consumer<TreatmentViewModel>(
+                          builder: (context, viewModel, child) {
+                            String cleanedResponse = viewModel.response
+                                .replaceAll('* ', '')
+                                .replaceAll('**', '')
+                                .replaceAll('*', ' ')
+                                .replaceAll('  ', '');
+                            return Text(
+                              cleanedResponse.isEmpty
+                                  ? "Memuat saran..."
+                                  : cleanedResponse,
+                              style: TextStyleConstant.fontStyle1,
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
