@@ -28,8 +28,18 @@ class BoxConstant {
     borderRadius: BorderRadius.circular(20),
     boxShadow: shadow1,
     border: Border.all(
-      color: Colors.grey,
+      color: ColorConstant.grey1,
       width: 0.5,
+    ),
+  );
+
+  static BoxDecoration decoration3WithThinBorder = BoxDecoration(
+    color: ColorConstant.primary,
+    borderRadius: BorderRadius.circular(20),
+    boxShadow: shadow1,
+    border: Border.all(
+      color: ColorConstant.grey2,
+      width: 0.1,
     ),
   );
 }

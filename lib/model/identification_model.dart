@@ -1,6 +1,3 @@
-// To parse this JSON data, do
-//
-// final IdentificationModel = IdentificationModelFromJson(jsonString);
 import 'dart:convert';
 
 IdentificationModel identificationModelFromJson(String str) =>

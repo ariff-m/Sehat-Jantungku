@@ -11,6 +11,7 @@ import 'package:sehatjantungku/screens/suggestions/treatment_screen.dart';
 import 'package:sehatjantungku/screens/suggestions/prevention_screen.dart';
 import 'package:sehatjantungku/screens/suggestions/suggestion_view_model.dart';
 import 'package:sehatjantungku/screens/identification/identification_screen.dart';
+import 'package:sehatjantungku/screens/identification/identification_details.dart';
 
 void main() async {
   await dotenv.load(fileName: '.env');
@@ -44,6 +45,10 @@ class MyApp extends StatelessWidget {
           '/mapsPage': (_) => const MapsPage(),
           '/preventionPage': (_) => const PreventionPage(),
           '/treatmentPage': (_) => const TreatmentPage(),
+          '/detailPage': (context) {
+            final id = ModalRoute.of(context)!.settings.arguments as String;
+            return DetailPage(id: id);
+          },
         },
       ),
     );

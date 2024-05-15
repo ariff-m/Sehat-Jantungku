@@ -32,6 +32,13 @@ class TextStyleConstant {
     ),
   );
 
+   static TextStyle fontStyleHeader4 = GoogleFonts.poppins(
+    textStyle: const TextStyle(
+      fontSize: 15,
+      fontWeight: FontWeight.w500,
+    ),
+  );
+
    static TextStyle fontStyle1 = GoogleFonts.poppins(
     textStyle: const TextStyle(
       fontWeight: FontWeight.normal,

@@ -6,5 +6,6 @@ class ColorConstant {
   static Color secondary = Colors.blue;
   static Color grey1 = Colors.grey;
   static Color grey2 = CupertinoColors.systemGrey;
+  static Color positive = CupertinoColors.systemRed;
 
 }

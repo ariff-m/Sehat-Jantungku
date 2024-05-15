@@ -27,6 +27,26 @@ class IdentificationService {
     }
   }
 
+  Future<IdentificationModel> fetchIdentificationModelById(String id) async {
+    try {
+      final response = await _dio.get("$baseUrl/identification/$id");
+
+      if (response.statusCode == 200) {
+        return IdentificationModel.fromJson(response.data);
+      } else {
+        if (kDebugMode) {
+          print('Gagal mengambil data: ${response.statusCode}');
+        }
+        throw Exception('Gagal mengambil data: ${response.statusCode}');
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error: $e');
+      }
+      rethrow;
+    }
+  }
+
   Future<Response<dynamic>> submitIdentificationModel(
       IdentificationModel model) async {
     try {
