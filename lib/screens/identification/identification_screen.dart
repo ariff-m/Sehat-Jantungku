@@ -21,6 +21,12 @@ class IdentificationPage extends StatelessWidget {
           ),
         ),
       ),
+      body: const Padding(
+        padding: EdgeInsets.all(20.0),
+        child: Column(
+          //children: [ListView.builder(itemBuilder: itemBuilder)],
+        ),
+      ),
     );
   }
 }
