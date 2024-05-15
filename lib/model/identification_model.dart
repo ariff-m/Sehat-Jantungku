@@ -44,7 +44,7 @@ class Data {
   int exerciseAngina;
   double oldpeak;
   int stSlope;
-  String result;
+  String? result;
 
   Data({
     required this.id,
@@ -63,7 +63,7 @@ class Data {
     required this.exerciseAngina,
     required this.oldpeak,
     required this.stSlope,
-    required this.result,
+    this.result,
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(

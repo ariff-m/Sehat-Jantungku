@@ -4,12 +4,12 @@ import 'package:sehatjantungku/constants/image_constant.dart';
 import 'package:sehatjantungku/screens/home/home_view_model.dart';
 import 'package:sehatjantungku/constants/text_style_constant.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:sehatjantungku/screens/identification/identification_screen.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
 
   final HomePageViewModel viewModel = HomePageViewModel();
-
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +70,9 @@ class MyHomePage extends StatelessWidget {
                           style: TextStyleConstant.fontStyleHeader1,
                         ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/identificationPage');
+                          },
                           style: ElevatedButton.styleFrom(),
                           child: Text('Cek Sekarang',
                               style: TextStyleConstant.buttonCek),

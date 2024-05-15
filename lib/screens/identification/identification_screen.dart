@@ -1,9 +1,13 @@
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter/foundation.dart';
 import 'package:sehatjantungku/constants/box_constant.dart';
 import 'package:sehatjantungku/constants/color_constant.dart';
 import 'package:sehatjantungku/model/identification_model.dart';
 import 'package:sehatjantungku/constants/text_style_constant.dart';
+import 'package:sehatjantungku/screens/identification/identification_details.dart';
+import 'package:sehatjantungku/screens/identification/identification_view_model.dart';
 import 'package:sehatjantungku/service/identification_service.dart';
 
 class IdentificationPage extends StatelessWidget {
@@ -15,6 +19,7 @@ class IdentificationPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: ColorConstant.primary),
         backgroundColor: ColorConstant.secondary,
         centerTitle: true,
         title: Text(
@@ -44,56 +49,54 @@ class IdentificationPage extends StatelessWidget {
 
               return GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(
-                    context,
-                    '/detailPage',
-                    arguments: item.id,
-                  );
+                  if (kDebugMode) {
+                    print('Selected item: ${item.name}');
+                  }
+                  Provider.of<IdentificationViewModel>(context, listen: false)
+                      .selectIdentification = item;
+
+                  Navigator.pushNamed(context, '/detailsPage');
                 },
-                child: Column(
-                  children: [
-                    Container(
-                      height: 90,
-                      decoration: BoxConstant.decoration3WithThinBorder,
-                      margin: const EdgeInsets.symmetric(vertical: 10),
-                      child: Column(
-                        children: [
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          ListTile(
-                            title: Text(item.name,
-                                style: TextStyleConstant.fontStyleHeader4),
-                            subtitle: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                child: Container(
+                  height: 90,
+                  decoration: BoxConstant.decoration3WithThinBorder,
+                  margin: const EdgeInsets.symmetric(vertical: 10),
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      ListTile(
+                        title: Text(item.name,
+                            style: TextStyleConstant.fontStyleHeader4),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              item.result ?? '',
+                              style: item.result == 'Pemeriksaan Lanjutan'
+                                  ? TextStyleConstant.fontStyle1
+                                      .copyWith(color: ColorConstant.positive)
+                                  : TextStyleConstant.fontStyle1,
+                            ),
+                            Row(
                               children: [
                                 Text(
-                                  item.result,
-                                  style: item.result == 'Pemeriksaan Lanjutan'
-                                      ? TextStyleConstant.fontStyle1.copyWith(
-                                          color: ColorConstant.positive)
-                                      : TextStyleConstant.fontStyle1,
+                                  formattedDate,
+                                  style: TextStyleConstant.fontStyle1,
                                 ),
-                                Row(
-                                  children: [
-                                    Text(
-                                      formattedDate,
-                                      style: TextStyleConstant.fontStyle1,
-                                    ),
-                                    const SizedBox(width: 10),
-                                    Text(
-                                      formattedTime,
-                                      style: TextStyleConstant.fontStyle1,
-                                    ),
-                                  ],
+                                const SizedBox(width: 10),
+                                Text(
+                                  formattedTime,
+                                  style: TextStyleConstant.fontStyle1,
                                 ),
                               ],
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               );
             }).toList(),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sehatjantungku/screens/home/home_page.dart';
 import 'package:sehatjantungku/constants/image_constant.dart';
-import 'package:sehatjantungku/screens/home/bottom_navigation.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
@@ -10,7 +10,7 @@ class SplashPage extends StatelessWidget {
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const BottomNavigationPage()),
+        MaterialPageRoute(builder: (context) =>  MyHomePage()),
       );
     });
 

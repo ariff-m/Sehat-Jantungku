@@ -32,11 +32,8 @@ dependencies:
     sdk: flutter
   provider: ^6.1.2
   dio: ^5.4.3+1
-  email_validator: ^2.1.17
   youtube_player_flutter: ^9.0.1
-  persistent_bottom_nav_bar: ^5.0.2
   google_fonts: ^6.2.1
-  path_provider: ^2.0.2
   google_maps_flutter: ^2.6.1
   flutter_dotenv: ^5.1.0
   geolocator: ^11.0.0
@@ -63,7 +60,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -104,5 +100,5 @@ flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
   image_path: "assets/icon_logo.png"
-  min_sdk_android: 21 # android min sdk min:16, default 21
+  min_sdk_android: 21
   
