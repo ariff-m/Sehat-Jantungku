@@ -1,4 +1,4 @@
-class homeScreenModel {
+class HomeScreenModel {
   final List<String> images = [
     'assets/gejala_1.jpg',
     'assets/gejala_2.jpg',
