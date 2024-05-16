@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:sehatjantungku/utils/base_url.dart';
@@ -47,17 +49,16 @@ class IdentificationService {
     }
   }
 
-  Future<Response<dynamic>> submitIdentificationModel(
-      IdentificationModel model) async {
+  Future<Response<dynamic>> submitIdentificationModel(Data data) async {
     try {
       final response = await _dio.post(
-        "$baseUrl/identification/1",
+        "$baseUrl/identification/",
         options: Options(
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',
           },
         ),
-        data: identificationModelToJson(model),
+        data: json.encode(data.toJson()),
       );
 
       if (response.statusCode == 201) {

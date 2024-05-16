@@ -6,16 +6,15 @@ class PredictService {
   final Dio _dio = Dio();
   final String baseUrl = predict;
 
-  Future<Response<dynamic>> postPrediction(int userId) async {
+  Future<Response<dynamic>> getPrediction(int id) async {
     try {
-      final response = await _dio.post(
-        "$baseUrl/predict/$userId",
+      final response = await _dio.get(
+        "$baseUrl/predict/1/$id",
         options: Options(
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',
           },
         ),
-        data: {},
       );
 
       if (response.statusCode == 200 || response.statusCode == 201) {
