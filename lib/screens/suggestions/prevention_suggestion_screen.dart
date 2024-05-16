@@ -5,65 +5,45 @@ import 'package:sehatjantungku/constants/color_constant.dart';
 import 'package:sehatjantungku/constants/text_style_constant.dart';
 import 'package:sehatjantungku/screens/suggestions/suggestion_view_model.dart';
 
-class TreatmentPage extends StatelessWidget {
-  const TreatmentPage({super.key});
+class PreventionScreen extends StatelessWidget {
+  const PreventionScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = Provider.of<TreatmentViewModel>(context, listen: false);
+    final viewModel = Provider.of<PreventionViewModel>(context, listen: false);
     if (viewModel.response.isEmpty && !viewModel.isLoading) {
       viewModel.getResponseGemini();
     }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
         centerTitle: true,iconTheme: IconThemeData(color: ColorConstant.primary),
         title: Text(
-          'Saran Penanganan',
+          'Saran Pencegahan',
           style: TextStyleConstant.fontStyleHeader1,
         ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(15),
-              width: double.infinity,
-              decoration: BoxConstant.decoration3,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Segera konsultasikan diri Anda dengan dokter atau spesialis kardiovaskular: ",
-                    style: TextStyleConstant.fontStyleHeader3,
-                  ),
-                  const SizedBox(height: 10),
-                  Text(
-                    "Dokter akan melakukan pemeriksaan fisik yang komprehensif, mengevaluasi riwayat kesehatan dengan teliti, dan mungkin melakukan berbagai jenis tes diagnostik seperti elektrokardiogram (EKG), analisis darah secara menyeluruh, atau pencitraan jantung untuk mengetahui kondisi Anda.",
-                    style: TextStyleConstant.fontStyle1,
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 20),
-            Expanded(
-              child: Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(15),
-                decoration: BoxConstant.decoration3,
+        child: Container(
+          decoration: BoxConstant.decoration3,
+          child: Padding(
+            padding: const EdgeInsets.all(15),
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(minHeight: 150),
+              child: IntrinsicHeight(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Tips untuk Perubahan Gaya Hidup: ",
+                      "Berikut ini merupakan saran pencegahan penyakit jantung atau kardiovaskular:",
                       style: TextStyleConstant.fontStyleHeader3,
                     ),
                     const SizedBox(height: 10),
                     Expanded(
                       child: SingleChildScrollView(
-                        child: Consumer<TreatmentViewModel>(
+                        child: Consumer<PreventionViewModel>(
                           builder: (context, viewModel, child) {
                             String cleanedResponse = viewModel.response
                                 .replaceAll('* ', '')
@@ -84,7 +64,7 @@ class TreatmentPage extends StatelessWidget {
                 ),
               ),
             ),
-          ],
+          ),
         ),
       ),
     );

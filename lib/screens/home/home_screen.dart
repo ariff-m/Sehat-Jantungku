@@ -72,7 +72,7 @@ class MyHomeScreen extends StatelessWidget {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, '/IdentificationScreen');
+                            Navigator.pushNamed(context, '/identificationScreen');
                           },
                           style: ElevatedButton.styleFrom(),
                           child: Text('Cek Sekarang',
@@ -118,7 +118,7 @@ class MyHomeScreen extends StatelessWidget {
                                       top: Radius.circular(20),
                                     ),
                                     child: Image.asset(
-                                      viewModel.homePageModel.images[index],
+                                      viewModel.homeScreenModel.images[index],
                                       height: 100,
                                       fit: BoxFit.cover,
                                     ),
@@ -130,7 +130,7 @@ class MyHomeScreen extends StatelessWidget {
                                           (index >= 2 && index <= 6) ? 11 : 0,
                                     ),
                                     child: Text(
-                                      viewModel.homePageModel.textGejala[index],
+                                      viewModel.homeScreenModel.textGejala[index],
                                       style: TextStyleConstant.fontStyleHeader3,
                                       textAlign: TextAlign.center,
                                     ),
@@ -190,11 +190,11 @@ class MyHomeScreen extends StatelessWidget {
         onTap: (index) {
           // Logika navigasi berdasarkan indeks yang dipilih
           if (index == 0) {
-            Navigator.pushNamed(context, '/homePage');
+            Navigator.pushNamed(context, '/homeScreen');
           } else if (index == 1) {
-            Navigator.pushNamed(context, '/IdentificationScreen');
+            Navigator.pushNamed(context, '/identificationScreen');
           } else if (index == 2) {
-            Navigator.pushNamed(context, '/MapsScreen');
+            Navigator.pushNamed(context, '/mapsScreen');
           }
         },
       ),

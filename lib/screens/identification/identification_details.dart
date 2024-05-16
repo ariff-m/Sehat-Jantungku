@@ -8,8 +8,8 @@ import 'package:sehatjantungku/constants/text_style_constant.dart';
 
 import 'package:sehatjantungku/screens/identification/identification_view_model.dart';
 
-class DetailPage extends StatelessWidget {
-  const DetailPage({super.key});
+class DetailScreen extends StatelessWidget {
+  const DetailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -105,10 +105,10 @@ class DetailPage extends StatelessWidget {
                   onPressed: () {
                     if (selectedIdentification.result ==
                         'Pemeriksaan Lanjutan') {
-                      Navigator.pushNamed(context, '/treatmentPage');
+                      Navigator.pushNamed(context, '/treatmentScreen');
                     } else if (selectedIdentification.result ==
                         'Jantungmu Sehat') {
-                      Navigator.pushNamed(context, '/preventionPage');
+                      Navigator.pushNamed(context, '/preventionScreen');
                     }
                   },
                   child: Text(
@@ -120,7 +120,7 @@ class DetailPage extends StatelessWidget {
                 const SizedBox(height: 10),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/MapsScreen');
+                    Navigator.pushNamed(context, '/mapsScreen');
                   },
                   child: const Text('Pusat Kesehatan Terdekat'),
                 ),

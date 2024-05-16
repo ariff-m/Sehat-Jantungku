@@ -81,11 +81,11 @@ class MapsScreen extends StatelessWidget {
         currentIndex: currentIndex,
         onTap: (index) {
           if (index == 0) {
-            Navigator.pushNamed(context, '/homePage');
+            Navigator.pushNamed(context, '/homeScreen');
           } else if (index == 1) {
-            Navigator.pushNamed(context, '/IdentificationScreen');
+            Navigator.pushNamed(context, '/identificationScreen');
           } else if (index == 2) {
-            Navigator.pushNamed(context, '/MapsScreen');
+            Navigator.pushNamed(context, '/mapsScreen');
           }
         },
       ),

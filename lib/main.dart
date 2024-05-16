@@ -8,8 +8,8 @@ import 'package:sehatjantungku/constants/color_constant.dart';
 import 'package:sehatjantungku/screens/maps/maps_screen.dart';
 import 'package:sehatjantungku/screens/splash/splash_screen.dart';
 import 'package:sehatjantungku/screens/maps/maps_view_model.dart';
-import 'package:sehatjantungku/screens/suggestions/treatment_screen.dart';
-import 'package:sehatjantungku/screens/suggestions/prevention_screen.dart';
+import 'package:sehatjantungku/screens/suggestions/treatment_suggestion_screen.dart';
+import 'package:sehatjantungku/screens/suggestions/prevention_suggestion_screen.dart';
 import 'package:sehatjantungku/screens/suggestions/suggestion_view_model.dart';
 import 'package:sehatjantungku/screens/identification/identification_form.dart';
 import 'package:sehatjantungku/screens/identification/identification_screen.dart';
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => IdentificationViewModel()),
       ],
       child: MaterialApp(
-        title: 'SehatJantungku',
+        title: 'Sehat Jantungku',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: ColorConstant.secondary),
         ),
@@ -43,13 +43,13 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (_) => const SplashScreen(),
-          '/homePage': (_) => MyHomeScreen(),
-          '/MapsScreen': (_) => const MapsScreen(),
-          '/treatmentPage': (_) => const TreatmentPage(),
-          '/preventionPage': (_) => const PreventionPage(),
-          '/IdentificationScreen': (_) => const IdentificationScreen(),
-          '/detailsPage': (_) => const DetailPage(),
-          '/identificationFormPage': (_) => const IdentificationFormScreen(),
+          '/homeScreen': (_) => MyHomeScreen(),
+          '/mapsScreen': (_) => const MapsScreen(),
+          '/treatmentScreen': (_) => const TreatmentScreen(),
+          '/preventionScreen': (_) => const PreventionScreen(),
+          '/identificationScreen': (_) => const IdentificationScreen(),
+          '/detailsScreen': (_) => const DetailScreen(),
+          '/identificationFormScreen': (_) => const IdentificationFormScreen(),
         },
       ),
     );
