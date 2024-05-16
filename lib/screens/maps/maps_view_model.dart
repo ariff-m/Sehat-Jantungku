@@ -40,7 +40,7 @@ class GPS {
   }
 }
 
-class MapsProvider extends ChangeNotifier {
+class MapsViewModel extends ChangeNotifier {
   final GPS _gps = GPS();
   Position? _userposition;
   Position? get userPosition => _userposition;

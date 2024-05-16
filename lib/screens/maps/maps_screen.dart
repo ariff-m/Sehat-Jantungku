@@ -6,30 +6,30 @@ import 'package:sehatjantungku/screens/maps/maps_view_model.dart';
 import 'package:sehatjantungku/constants/text_style_constant.dart';
 import 'package:sehatjantungku/widgets/bottom_navigator_widget.dart';
 
-class MapsPage extends StatelessWidget {
-  const MapsPage({super.key});
+class MapsScreen extends StatelessWidget {
+  const MapsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Provider.of<MapsProvider>(context, listen: false).addCustomIcon();
-    Provider.of<MapsProvider>(context, listen: false).startPositionStream();
-    Provider.of<MapsProvider>(context, listen: false).stopPositionStream();
+    Provider.of<MapsViewModel>(context, listen: false).addCustomIcon();
+    Provider.of<MapsViewModel>(context, listen: false).startPositionStream();
+    Provider.of<MapsViewModel>(context, listen: false).stopPositionStream();
 
-    final MapsProvider mapsProvider =
-        Provider.of<MapsProvider>(context, listen: false);
+    final MapsViewModel mapsProvider =
+        Provider.of<MapsViewModel>(context, listen: false);
     int currentIndex = 2;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorConstant.secondary,
         centerTitle: true,
-        automaticallyImplyLeading: true,
+        automaticallyImplyLeading: false,
         title: Text('Lokasi Pusat Kesehatan',
             style: TextStyleConstant.fontStyleHeader1),
       ),
       body: Stack(
         children: [
           Center(
-            child: Consumer<MapsProvider>(
+            child: Consumer<MapsViewModel>(
               builder: (context, mapsProvider, _) {
                 LatLng myLocation = mapsProvider.userPosition != null
                     ? LatLng(mapsProvider.userPosition!.latitude,
@@ -60,7 +60,7 @@ class MapsPage extends StatelessWidget {
               alignment: Alignment.bottomLeft,
               child: TextButton(
                 onPressed: () {
-                  Provider.of<MapsProvider>(context, listen: false)
+                  Provider.of<MapsViewModel>(context, listen: false)
                       .addHospitalMarkers(
                           mapsProvider.mapsModel.hospitalCordinates);
                 },
@@ -83,9 +83,9 @@ class MapsPage extends StatelessWidget {
           if (index == 0) {
             Navigator.pushNamed(context, '/homePage');
           } else if (index == 1) {
-            Navigator.pushNamed(context, '/identificationPage');
+            Navigator.pushNamed(context, '/IdentificationScreen');
           } else if (index == 2) {
-            Navigator.pushNamed(context, '/mapsPage');
+            Navigator.pushNamed(context, '/MapsScreen');
           }
         },
       ),

@@ -2,6 +2,7 @@ import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:sehatjantungku/constants/box_constant.dart';
 import 'package:sehatjantungku/constants/color_constant.dart';
 import 'package:sehatjantungku/model/identification_model.dart';
@@ -10,10 +11,8 @@ import 'package:sehatjantungku/service/identification_service.dart';
 import 'package:sehatjantungku/widgets/bottom_navigator_widget.dart';
 import 'package:sehatjantungku/screens/identification/identification_view_model.dart';
 
-class IdentificationPage extends StatelessWidget {
-  const IdentificationPage({
-    super.key,
-  });
+class IdentificationScreen extends StatelessWidget {
+  const IdentificationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +110,10 @@ class IdentificationPage extends StatelessWidget {
           Navigator.pushNamed(context, '/identificationFormPage');
         },
         backgroundColor: ColorConstant.secondary,
-        child: Icon(Icons.add,color: ColorConstant.primary,),
+        child: Icon(
+          CupertinoIcons.add,
+          color: ColorConstant.primary,
+        ),
       ),
       bottomNavigationBar: MyBottomNavigationBar(
         currentIndex: currentIndex,
@@ -119,9 +121,9 @@ class IdentificationPage extends StatelessWidget {
           if (index == 0) {
             Navigator.pushNamed(context, '/homePage');
           } else if (index == 1) {
-            Navigator.pushNamed(context, '/identificationPage');
+            Navigator.pushNamed(context, '/IdentificationScreen');
           } else if (index == 2) {
-            Navigator.pushNamed(context, '/mapsPage');
+            Navigator.pushNamed(context, '/MapsScreen');
           }
         },
       ),

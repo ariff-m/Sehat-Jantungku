@@ -1,7 +1,7 @@
 import 'package:sehatjantungku/model/home_page_model.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class HomePageViewModel {
+class HomeScreenViewModel {
   final HomePageModel homePageModel = HomePageModel();
   final YoutubePlayerController ytControl = YoutubePlayerController(
     initialVideoId: 'lgkwjHYJEGQ',

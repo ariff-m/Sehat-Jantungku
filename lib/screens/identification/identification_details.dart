@@ -120,7 +120,7 @@ class DetailPage extends StatelessWidget {
                 const SizedBox(height: 10),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/mapsPage');
+                    Navigator.pushNamed(context, '/MapsScreen');
                   },
                   child: const Text('Pusat Kesehatan Terdekat'),
                 ),

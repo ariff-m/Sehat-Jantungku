@@ -6,10 +6,10 @@ import 'package:sehatjantungku/constants/text_style_constant.dart';
 import 'package:sehatjantungku/widgets/bottom_navigator_widget.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class MyHomePage extends StatelessWidget {
-  MyHomePage({super.key});
+class MyHomeScreen extends StatelessWidget {
+  MyHomeScreen({super.key});
 
-  final HomePageViewModel viewModel = HomePageViewModel();
+  final HomeScreenViewModel viewModel = HomeScreenViewModel();
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +72,7 @@ class MyHomePage extends StatelessWidget {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, '/identificationPage');
+                            Navigator.pushNamed(context, '/IdentificationScreen');
                           },
                           style: ElevatedButton.styleFrom(),
                           child: Text('Cek Sekarang',
@@ -192,9 +192,9 @@ class MyHomePage extends StatelessWidget {
           if (index == 0) {
             Navigator.pushNamed(context, '/homePage');
           } else if (index == 1) {
-            Navigator.pushNamed(context, '/identificationPage');
+            Navigator.pushNamed(context, '/IdentificationScreen');
           } else if (index == 2) {
-            Navigator.pushNamed(context, '/mapsPage');
+            Navigator.pushNamed(context, '/MapsScreen');
           }
         },
       ),
