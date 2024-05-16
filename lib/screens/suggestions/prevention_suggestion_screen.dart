@@ -18,11 +18,21 @@ class PreventionScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        centerTitle: true,iconTheme: IconThemeData(color: ColorConstant.primary),
+        centerTitle: true,
+        iconTheme: IconThemeData(color: ColorConstant.primary),
         title: Text(
           'Saran Pencegahan',
           style: TextStyleConstant.fontStyleHeader1,
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.refresh),
+            onPressed: () {
+              viewModel.clearCleanedResponse();
+              viewModel.getResponseGemini();
+            },
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),

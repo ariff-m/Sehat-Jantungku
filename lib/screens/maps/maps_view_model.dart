@@ -75,8 +75,9 @@ class MapsViewModel extends ChangeNotifier {
     try {
       await _gps.startPositionStream(handlePositionStream);
     } catch (e) {
-      // ignore: avoid_print
-      print("Error starting position stream: $e");
+      if (kDebugMode) {
+        print("Error starting position stream: $e");
+      }
     }
     notifyListeners();
   }
@@ -127,5 +128,19 @@ class MapsViewModel extends ChangeNotifier {
 
     _hospitalMarkers = hospitalMarkers;
     notifyListeners();
+  }
+
+  void refreshMap() {
+    stopPositionStream();
+    _userposition = null;
+    _hospitalMarkers.clear();
+    notifyListeners();
+
+    Future.delayed(const Duration(seconds: 1), () {
+      startPositionStream();
+    });
+    Future.delayed(const Duration(seconds: 2), () {
+      addHospitalMarkers(mapsModel.hospitalCordinates);
+    });
   }
 }

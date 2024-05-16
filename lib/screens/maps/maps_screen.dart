@@ -20,11 +20,20 @@ class MapsScreen extends StatelessWidget {
     int currentIndex = 2;
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: ColorConstant.primary),
         backgroundColor: ColorConstant.secondary,
         centerTitle: true,
         automaticallyImplyLeading: false,
         title: Text('Lokasi Pusat Kesehatan',
             style: TextStyleConstant.fontStyleHeader1),
+      actions: [
+          IconButton(
+            icon: const Icon(Icons.refresh),
+            onPressed: () {
+             Provider.of<MapsViewModel>(context, listen: false).refreshMap();
+            },
+          ),
+        ],
       ),
       body: Stack(
         children: [

@@ -1,13 +1,11 @@
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:sehatjantungku/constants/box_constant.dart';
 import 'package:sehatjantungku/constants/color_constant.dart';
-import 'package:sehatjantungku/model/identification_model.dart';
 import 'package:sehatjantungku/constants/text_style_constant.dart';
-import 'package:sehatjantungku/service/identification_service.dart';
 import 'package:sehatjantungku/widgets/bottom_navigator_widget.dart';
 import 'package:sehatjantungku/screens/identification/identification_view_model.dart';
 
@@ -17,7 +15,7 @@ class IdentificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int currentIndex = 1;
-    final IdentificationService service = IdentificationService();
+
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: ColorConstant.primary),
@@ -28,19 +26,28 @@ class IdentificationScreen extends StatelessWidget {
           'Identification',
           style: TextStyleConstant.fontStyleHeader1,
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.refresh),
+            onPressed: () {
+              Provider.of<IdentificationViewModel>(context, listen: false)
+                  .fetchIdentificationModel();
+            },
+          ),
+        ],
       ),
-      body: FutureBuilder<IdentificationModel>(
-        future: service.fetchIdentificationModel(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
+      body: Consumer<IdentificationViewModel>(
+        builder: (context, viewModel, child) {
+          if (viewModel.identificationModel == null) {
+            viewModel.fetchIdentificationModel();
             return const Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
-          } else if (!snapshot.hasData || snapshot.data!.data.isEmpty) {
-            return const Center(child: Text('No data available'));
           }
 
-          final data = snapshot.data!.data;
+          final data = viewModel.identificationModel!.data;
+
+          if (data.isEmpty) {
+            return const Center(child: Text('No data available'));
+          }
 
           return ListView(
             padding: const EdgeInsets.all(20.0),
@@ -57,7 +64,9 @@ class IdentificationScreen extends StatelessWidget {
                   Provider.of<IdentificationViewModel>(context, listen: false)
                       .selectIdentification = item;
 
-                  Navigator.pushNamed(context, '/detailsScreen');
+                  Navigator.pushNamed(context, '/detailsScreen').then((_) {
+                    viewModel.fetchIdentificationModel();
+                  });
                 },
                 child: Container(
                   height: 90,
@@ -107,7 +116,10 @@ class IdentificationScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/identificationFormScreen');
+          Navigator.pushNamed(context, '/identificationFormScreen').then((_) {
+            Provider.of<IdentificationViewModel>(context, listen: false)
+                .fetchIdentificationModel();
+          });
         },
         backgroundColor: ColorConstant.secondary,
         child: Icon(

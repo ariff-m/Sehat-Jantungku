@@ -8,12 +8,12 @@ import 'package:sehatjantungku/constants/color_constant.dart';
 import 'package:sehatjantungku/screens/maps/maps_screen.dart';
 import 'package:sehatjantungku/screens/splash/splash_screen.dart';
 import 'package:sehatjantungku/screens/maps/maps_view_model.dart';
-import 'package:sehatjantungku/screens/suggestions/treatment_suggestion_screen.dart';
-import 'package:sehatjantungku/screens/suggestions/prevention_suggestion_screen.dart';
 import 'package:sehatjantungku/screens/suggestions/suggestion_view_model.dart';
 import 'package:sehatjantungku/screens/identification/identification_form.dart';
 import 'package:sehatjantungku/screens/identification/identification_screen.dart';
 import 'package:sehatjantungku/screens/identification/identification_details.dart';
+import 'package:sehatjantungku/screens/suggestions/treatment_suggestion_screen.dart';
+import 'package:sehatjantungku/screens/suggestions/prevention_suggestion_screen.dart';
 import 'package:sehatjantungku/screens/identification/identification_view_model.dart';
 
 void main() async {

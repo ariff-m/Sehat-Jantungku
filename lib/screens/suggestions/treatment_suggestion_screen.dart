@@ -22,6 +22,15 @@ class TreatmentScreen extends StatelessWidget {
           'Saran Penanganan',
           style: TextStyleConstant.fontStyleHeader1,
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.refresh),
+            onPressed: () {
+              viewModel.clearCleanedResponse();
+              viewModel.getResponseGemini();
+            },
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),

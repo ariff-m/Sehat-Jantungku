@@ -7,8 +7,10 @@ import 'package:sehatjantungku/service/predictions_service.dart';
 
 class IdentificationViewModel extends ChangeNotifier {
   Data? _selectedIdentification;
+  IdentificationModel? _identificationModel;
 
   Data? get selectedIdentification => _selectedIdentification;
+  IdentificationModel? get identificationModel => _identificationModel;
 
   set selectIdentification(Data identification) {
     _selectedIdentification = identification;
@@ -39,6 +41,17 @@ class IdentificationViewModel extends ChangeNotifier {
     return formKey.currentState?.validate() ?? false;
   }
 
+  Future<void> fetchIdentificationModel() async {
+    try {
+      _identificationModel = await _service.fetchIdentificationModel();
+      notifyListeners();
+    } catch (e) {
+      if (kDebugMode) {
+        print('Gagal mengambil data: $e');
+      }
+    }
+  }
+
   Future<void> submitForm() async {
     if (validateForm()) {
       formKey.currentState?.save();
@@ -67,10 +80,10 @@ class IdentificationViewModel extends ChangeNotifier {
           print('Data berhasil dikirim!');
         }
 
-        final allIdentifications = await _service.fetchIdentificationModel();
+        await fetchIdentificationModel();
 
         Data? identificationWithNullResult;
-        for (var data in allIdentifications.data) {
+        for (var data in _identificationModel!.data) {
           if (data.result == null) {
             identificationWithNullResult = data;
             break;
@@ -84,7 +97,7 @@ class IdentificationViewModel extends ChangeNotifier {
             print('ID dari data dengan result null: $id');
           }
 
-          PredictService().getPrediction(id);
+          await PredictService().getPrediction(id);
         } else {
           if (kDebugMode) {
             print('Tidak ditemukan data dengan result null.');

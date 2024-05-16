@@ -43,6 +43,11 @@ class PreventionViewModel extends ChangeNotifier {
       throw Exception(err);
     }
   }
+
+  void clearCleanedResponse() {
+    _response = '';
+    notifyListeners();
+  }
 }
 
 class TreatmentViewModel extends ChangeNotifier {
@@ -86,5 +91,10 @@ class TreatmentViewModel extends ChangeNotifier {
       notifyListeners();
       throw Exception(err);
     }
+  }
+
+  void clearCleanedResponse() {
+    _response = '';
+    notifyListeners();
   }
 }
