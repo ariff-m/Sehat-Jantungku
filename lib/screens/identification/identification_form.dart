@@ -20,7 +20,7 @@ class IdentificationFormScreen extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(20.0),
         child: Consumer<IdentificationViewModel>(
           builder: (context, formViewModel, child) {
             return Form(
@@ -30,7 +30,7 @@ class IdentificationFormScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return KeepAliveWrapper(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 5),
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: formFields[index](formViewModel),
                     ),
                   );
@@ -46,72 +46,151 @@ class IdentificationFormScreen extends StatelessWidget {
 
 List<Widget Function(IdentificationViewModel)> formFields = [
   (formViewModel) => TextFormField(
-        decoration: const InputDecoration(labelText: 'Name'),
+        decoration: InputDecoration(
+          labelText: 'Name',
+          hintText: 'Enter a name',
+          labelStyle: TextStyleConstant.fontStyle1,
+          border: const OutlineInputBorder(),
+        ),
+        style: TextStyleConstant.fontStyle1,
         onChanged: (value) => formViewModel.name = value,
         validator: (value) => value!.isEmpty ? 'Enter a name' : null,
       ),
   (formViewModel) => TextFormField(
-        decoration: const InputDecoration(labelText: 'Age'),
+        decoration: InputDecoration(
+          labelText: 'Age',
+          hintText: 'Enter an age',
+          labelStyle: TextStyleConstant.fontStyle1,
+          border: const OutlineInputBorder(),
+        ),
+        style: TextStyleConstant.fontStyle1,
         keyboardType: TextInputType.number,
         onChanged: (value) => formViewModel.age = int.tryParse(value) ?? 0,
         validator: (value) => value!.isEmpty ? 'Enter an age' : null,
       ),
   (formViewModel) => TextFormField(
-        decoration: const InputDecoration(labelText: 'Sex'),
+        decoration: InputDecoration(
+          labelText: 'Sex',
+          hintText: 'Enter sex',
+          labelStyle: TextStyleConstant.fontStyle1,
+          border: const OutlineInputBorder(),
+        ),
+        style: TextStyleConstant.fontStyle1,
         keyboardType: TextInputType.number,
         onChanged: (value) => formViewModel.sex = int.tryParse(value) ?? 0,
         validator: (value) => value!.isEmpty ? 'Enter sex' : null,
       ),
   (formViewModel) => TextFormField(
-        decoration: const InputDecoration(labelText: 'Chest Pain Type'),
+        decoration: InputDecoration(
+          labelText: 'Chest Pain Type',
+          hintText: 'Enter chest pain type',
+          labelStyle: TextStyleConstant.fontStyle1,
+          border: const OutlineInputBorder(),
+        ),
+        style: TextStyleConstant.fontStyle1,
         keyboardType: TextInputType.number,
-        onChanged: (value) => formViewModel.chestPainType = int.tryParse(value) ?? 0,
+        onChanged: (value) =>
+            formViewModel.chestPainType = int.tryParse(value) ?? 0,
         validator: (value) => value!.isEmpty ? 'Enter chest pain type' : null,
       ),
   (formViewModel) => TextFormField(
-        decoration: const InputDecoration(labelText: 'Resting BP'),
+        decoration: InputDecoration(
+          labelText: 'Resting BP',
+          hintText: 'Enter resting BP',
+          labelStyle: TextStyleConstant.fontStyle1,
+          border: const OutlineInputBorder(),
+        ),
+        style: TextStyleConstant.fontStyle1,
         keyboardType: TextInputType.number,
-        onChanged: (value) => formViewModel.restingBp = int.tryParse(value) ?? 0,
+        onChanged: (value) =>
+            formViewModel.restingBp = int.tryParse(value) ?? 0,
         validator: (value) => value!.isEmpty ? 'Enter resting BP' : null,
       ),
   (formViewModel) => TextFormField(
-        decoration: const InputDecoration(labelText: 'Cholesterol'),
+        decoration: InputDecoration(
+          labelText: 'Cholesterol',
+          hintText: 'Enter cholesterol',
+          labelStyle: TextStyleConstant.fontStyle1,
+          border: const OutlineInputBorder(),
+        ),
+        style: TextStyleConstant.fontStyle1,
         keyboardType: TextInputType.number,
-        onChanged: (value) => formViewModel.cholesterol = int.tryParse(value) ?? 0,
+        onChanged: (value) =>
+            formViewModel.cholesterol = int.tryParse(value) ?? 0,
         validator: (value) => value!.isEmpty ? 'Enter cholesterol' : null,
       ),
   (formViewModel) => TextFormField(
-        decoration: const InputDecoration(labelText: 'Fasting BS'),
+        decoration: InputDecoration(
+          labelText: 'Fasting BS',
+          hintText: 'Enter fasting BS',
+          labelStyle: TextStyleConstant.fontStyle1,
+          border: const OutlineInputBorder(),
+        ),
+        style: TextStyleConstant.fontStyle1,
         keyboardType: TextInputType.number,
-        onChanged: (value) => formViewModel.fastingBs = int.tryParse(value) ?? 0,
+        onChanged: (value) =>
+            formViewModel.fastingBs = int.tryParse(value) ?? 0,
         validator: (value) => value!.isEmpty ? 'Enter fasting BS' : null,
       ),
   (formViewModel) => TextFormField(
-        decoration: const InputDecoration(labelText: 'Resting ECG'),
+        decoration: InputDecoration(
+          labelText: 'Resting ECG',
+          hintText: 'Enter resting ECG',
+          labelStyle: TextStyleConstant.fontStyle1,
+          border: const OutlineInputBorder(),
+        ),
+        style: TextStyleConstant.fontStyle1,
         keyboardType: TextInputType.number,
-        onChanged: (value) => formViewModel.restingEcg = int.tryParse(value) ?? 0,
+        onChanged: (value) =>
+            formViewModel.restingEcg = int.tryParse(value) ?? 0,
         validator: (value) => value!.isEmpty ? 'Enter resting ECG' : null,
       ),
   (formViewModel) => TextFormField(
-        decoration: const InputDecoration(labelText: 'Max HR'),
+        decoration: InputDecoration(
+          labelText: 'Max HR',
+          hintText: 'Enter max HR',
+          labelStyle: TextStyleConstant.fontStyle1,
+          border: const OutlineInputBorder(),
+        ),
+        style: TextStyleConstant.fontStyle1,
         keyboardType: TextInputType.number,
         onChanged: (value) => formViewModel.maxHr = int.tryParse(value) ?? 0,
         validator: (value) => value!.isEmpty ? 'Enter max HR' : null,
       ),
   (formViewModel) => TextFormField(
-        decoration: const InputDecoration(labelText: 'Exercise Angina'),
+        decoration: InputDecoration(
+          labelText: 'Exercise Angina',
+          hintText: 'Enter exercise angina',
+          labelStyle: TextStyleConstant.fontStyle1,
+          border: const OutlineInputBorder(),
+        ),
+        style: TextStyleConstant.fontStyle1,
         keyboardType: TextInputType.number,
-        onChanged: (value) => formViewModel.exerciseAngina = int.tryParse(value) ?? 0,
+        onChanged: (value) =>
+            formViewModel.exerciseAngina = int.tryParse(value) ?? 0,
         validator: (value) => value!.isEmpty ? 'Enter exercise angina' : null,
       ),
   (formViewModel) => TextFormField(
-        decoration: const InputDecoration(labelText: 'Oldpeak'),
+        decoration: InputDecoration(
+          labelText: 'Oldpeak',
+          hintText: 'Enter oldpeak',
+          labelStyle: TextStyleConstant.fontStyle1,
+          border: const OutlineInputBorder(),
+        ),
+        style: TextStyleConstant.fontStyle1,
         keyboardType: TextInputType.number,
-        onChanged: (value) => formViewModel.oldpeak = double.tryParse(value) ?? 0.0,
+        onChanged: (value) =>
+            formViewModel.oldpeak = double.tryParse(value) ?? 0.0,
         validator: (value) => value!.isEmpty ? 'Enter oldpeak' : null,
       ),
   (formViewModel) => TextFormField(
-        decoration: const InputDecoration(labelText: 'ST Slope'),
+        decoration: InputDecoration(
+          labelText: 'ST Slope',
+          hintText: 'Enter ST slope',
+          labelStyle: TextStyleConstant.fontStyle1,
+          border: const OutlineInputBorder(),
+        ),
+        style: TextStyleConstant.fontStyle1,
         keyboardType: TextInputType.number,
         onChanged: (value) => formViewModel.stSlope = int.tryParse(value) ?? 0,
         validator: (value) => value!.isEmpty ? 'Enter ST slope' : null,
@@ -120,7 +199,13 @@ List<Widget Function(IdentificationViewModel)> formFields = [
         onPressed: () async {
           await formViewModel.submitForm();
         },
-        child: const Text('Submit'),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: ColorConstant.secondary,
+        ),
+        child: Text(
+          'Submit',
+          style: TextStyleConstant.buttonMaps,
+        ),
       ),
 ];
 
