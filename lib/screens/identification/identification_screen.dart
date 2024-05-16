@@ -6,22 +6,25 @@ import 'package:sehatjantungku/constants/box_constant.dart';
 import 'package:sehatjantungku/constants/color_constant.dart';
 import 'package:sehatjantungku/model/identification_model.dart';
 import 'package:sehatjantungku/constants/text_style_constant.dart';
-import 'package:sehatjantungku/screens/identification/identification_details.dart';
-import 'package:sehatjantungku/screens/identification/identification_view_model.dart';
 import 'package:sehatjantungku/service/identification_service.dart';
+import 'package:sehatjantungku/widgets/bottom_navigator_widget.dart';
+import 'package:sehatjantungku/screens/identification/identification_view_model.dart';
 
 class IdentificationPage extends StatelessWidget {
-  const IdentificationPage({super.key});
+  const IdentificationPage({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
+    int currentIndex = 1;
     final IdentificationService service = IdentificationService();
-
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: ColorConstant.primary),
         backgroundColor: ColorConstant.secondary,
         centerTitle: true,
+        automaticallyImplyLeading: false,
         title: Text(
           'Identification',
           style: TextStyleConstant.fontStyleHeader1,
@@ -101,6 +104,25 @@ class IdentificationPage extends StatelessWidget {
               );
             }).toList(),
           );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, '/identificationFormPage');
+        },
+        backgroundColor: ColorConstant.secondary,
+        child: Icon(Icons.add,color: ColorConstant.primary,),
+      ),
+      bottomNavigationBar: MyBottomNavigationBar(
+        currentIndex: currentIndex,
+        onTap: (index) {
+          if (index == 0) {
+            Navigator.pushNamed(context, '/homePage');
+          } else if (index == 1) {
+            Navigator.pushNamed(context, '/identificationPage');
+          } else if (index == 2) {
+            Navigator.pushNamed(context, '/mapsPage');
+          }
         },
       ),
     );

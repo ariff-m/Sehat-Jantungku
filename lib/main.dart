@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
+import 'package:sehatjantungku/screens/identification/identification_form.dart';
 import 'package:sehatjantungku/utils/gemini_api_key.dart';
 import 'package:sehatjantungku/screens/home/home_page.dart';
 import 'package:sehatjantungku/constants/color_constant.dart';
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
           '/preventionPage': (_) => const PreventionPage(),
           '/identificationPage': (_) => const IdentificationPage(),
           '/detailsPage': (_) => const DetailPage(),
+          '/identificationFormPage': (_) => const IdentificationFormScreen(),
         },
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sehatjantungku/constants/box_constant.dart';
+import 'package:sehatjantungku/constants/color_constant.dart';
 import 'package:sehatjantungku/constants/text_style_constant.dart';
 import 'package:sehatjantungku/screens/suggestions/suggestion_view_model.dart';
 
@@ -16,7 +17,7 @@ class TreatmentPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        centerTitle: true,
+        centerTitle: true,iconTheme: IconThemeData(color: ColorConstant.primary),
         title: Text(
           'Saran Penanganan',
           style: TextStyleConstant.fontStyleHeader1,

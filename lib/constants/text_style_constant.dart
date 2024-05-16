@@ -58,4 +58,5 @@ class TextStyleConstant {
       fontWeight: FontWeight.w500,
     ),
   );
+  
 }

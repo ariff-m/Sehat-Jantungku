@@ -3,8 +3,8 @@ import 'package:sehatjantungku/constants/box_constant.dart';
 import 'package:sehatjantungku/constants/image_constant.dart';
 import 'package:sehatjantungku/screens/home/home_view_model.dart';
 import 'package:sehatjantungku/constants/text_style_constant.dart';
+import 'package:sehatjantungku/widgets/bottom_navigator_widget.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-import 'package:sehatjantungku/screens/identification/identification_screen.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
@@ -13,6 +13,7 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int currentIndex = 0;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -183,6 +184,19 @@ class MyHomePage extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: MyBottomNavigationBar(
+        currentIndex: currentIndex,
+        onTap: (index) {
+          // Logika navigasi berdasarkan indeks yang dipilih
+          if (index == 0) {
+            Navigator.pushNamed(context, '/homePage');
+          } else if (index == 1) {
+            Navigator.pushNamed(context, '/identificationPage');
+          } else if (index == 2) {
+            Navigator.pushNamed(context, '/mapsPage');
+          }
+        },
       ),
     );
   }
