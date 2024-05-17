@@ -12,6 +12,14 @@ class IdentificationViewModel extends ChangeNotifier {
   Data? get selectedIdentification => _selectedIdentification;
   IdentificationModel? get identificationModel => _identificationModel;
 
+  set identificationModel(IdentificationModel? model) {
+    _identificationModel = model;
+    if (kDebugMode) {
+      print('Identification Model set: $_identificationModel');
+    }
+    notifyListeners();
+  }
+
   set selectIdentification(Data identification) {
     _selectedIdentification = identification;
     if (kDebugMode) {
@@ -43,11 +51,10 @@ class IdentificationViewModel extends ChangeNotifier {
 
   Future<void> fetchIdentificationModel() async {
     try {
-      _identificationModel = await _service.fetchIdentificationModel();
-      notifyListeners();
+      identificationModel = await _service.fetchIdentificationModel();
     } catch (e) {
       if (kDebugMode) {
-        print('Gagal mengambil data: $e');
+        print('Failed to fetch data: $e');
       }
     }
   }
@@ -77,7 +84,7 @@ class IdentificationViewModel extends ChangeNotifier {
       try {
         await _service.submitIdentificationModel(model);
         if (kDebugMode) {
-          print('Data berhasil dikirim!');
+          print('Data successfully submitted!');
         }
 
         await fetchIdentificationModel();
@@ -94,18 +101,18 @@ class IdentificationViewModel extends ChangeNotifier {
           final id = identificationWithNullResult.id;
 
           if (kDebugMode) {
-            print('ID dari data dengan result null: $id');
+            print('ID of data with null result: $id');
           }
 
           await PredictService().getPrediction(id);
         } else {
           if (kDebugMode) {
-            print('Tidak ditemukan data dengan result null.');
+            print('No data found with null result.');
           }
         }
       } catch (e) {
         if (kDebugMode) {
-          print('Gagal mengirim data: $e');
+          print('Failed to submit data: $e');
         }
       }
     }
